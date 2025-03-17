@@ -11,7 +11,7 @@ func create_new_ammo():
 	pass
 
 func _ready() -> void:
-	create_new_tower()
+	create_new_tower({"rangeMax": 250})
 	create_new_tower({
 		"sprTurret": preload("res://towerParts/turrets/turretB.tres"),
 		"price": 10
