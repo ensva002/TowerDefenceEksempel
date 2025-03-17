@@ -1,16 +1,20 @@
 extends Area2D
 
-var tower = preload("res://tower.tscn")
+var tower
 var placable
 var overlapping
-var price = 5
+
+func _ready() -> void:
+	tower = TowerManager.select_tower(1)
+	print(tower)
 
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
-	if Input.is_action_just_pressed("LMB") && placable && Manager.adjust_funds(-price):
-		var towerInst = tower.instantiate()
-		towerInst.global_position = global_position
-		get_tree().current_scene.add_child(towerInst)
+	if Input.is_action_just_pressed("LMB") && placable && Manager.adjust_funds(-tower.get_meta("price")):
+		var new_tower = tower.duplicate()
+		new_tower.global_position = global_position
+		get_tree().current_scene.add_child(new_tower)
+
 		
 	overlapping = bool(get_overlapping_areas().size())
 	if position.y < 192:

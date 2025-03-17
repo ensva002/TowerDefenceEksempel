@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdso8na2rm3n2"]
+
+[ext_resource type="Texture2D" uid="uid://44qvyqoxhm23" path="res://spritesheet_hud.png" id="1_0t63x"]
+[ext_resource type="Script" uid="uid://df5oerggq8hev" path="res://coin.gd" id="2_v7riw"]
+
+[node name="Coin" type="Node2D"]
+z_index = 10
+script = ExtResource("2_v7riw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("1_0t63x")
+region_enabled = true
+region_rect = Rect2(22, 534, 86, 86)

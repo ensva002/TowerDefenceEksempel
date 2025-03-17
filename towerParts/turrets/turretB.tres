@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d21sk44obt3a4"]
+
+[ext_resource type="Texture2D" uid="uid://b0b0xemxbsjy8" path="res://towerDefense_tilesheet@2.png" id="1_opirl"]
+
+[resource]
+atlas = ExtResource("1_opirl")
+region = Rect2(2579, 1287, 90, 116)

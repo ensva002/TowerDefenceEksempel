@@ -8,12 +8,12 @@
 size = Vector2(102, 102)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
-radius = 250.0
+radius = 100.0
 
 [node name="tower" type="Area2D"]
 collision_mask = 0
 script = ExtResource("1_vedim")
-towerRange = 250.0
+towerRange = 100.0
 rateOfFire = 0.2
 
 [node name="Boundry" type="CollisionShape2D" parent="."]
@@ -23,14 +23,12 @@ shape = SubResource("RectangleShape2D_vedim")
 [node name="Base" type="Sprite2D" parent="."]
 z_index = 1
 texture = ExtResource("1_k1sas")
-region_enabled = true
 region_rect = Rect2(2433, 897, 126, 126)
 
 [node name="Gun" type="Sprite2D" parent="."]
 z_index = 2
 texture = ExtResource("1_k1sas")
 offset = Vector2(0, -21)
-region_enabled = true
 region_rect = Rect2(2432, 1280, 128, 128)
 
 [node name="Tip" type="Node2D" parent="Gun"]

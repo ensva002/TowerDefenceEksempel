@@ -192,7 +192,7 @@ script = ExtResource("1_vonw3")
 enemycount = 15
 enemyType = ExtResource("4_f2txt")
 enemyCoolDown = 0.5
-startingFunds = 11
+startingFunds = 2000
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1000
@@ -202,7 +202,7 @@ tile_set = SubResource("TileSet_oi3di")
 [node name="road" type="Area2D" parent="TileMapLayer"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMapLayer/road"]
-polygon = PackedVector2Array(2051, 400, 401, 398, 402, 880, 2054, 880, 2053, 783, 501, 783, 500, 498, 2051, 497)
+polygon = PackedVector2Array(2051, 400, 453.323, 398.063, 401, 450, 401.876, 826.535, 454, 880, 2054, 880, 2053, 783, 501, 783, 500, 498, 2051, 497)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1011, 569)
@@ -234,7 +234,7 @@ text = "Build
 Tower
 (6)"
 
-[node name="Control" type="Control" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer"]
+[node name="Padding" type="Control" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 
@@ -270,6 +270,11 @@ text = "200"
 
 [node name="LifeContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MarginRight" type="TextureRect" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer"]
+layout_mode = 2
+expand_mode = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1ainy")

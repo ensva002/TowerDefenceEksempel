@@ -7,7 +7,8 @@ var prev_health
 var health
 var color
 var blood = preload("res://blood.tscn")
-
+var bloodInst
+var coin = preload("res://coin.tscn")
 
 func _ready() -> void:
 	max_health += randi_range(0,max_health/2) #random bare for variasjon under testing, fjern senere
@@ -23,10 +24,15 @@ func _process(delta: float) -> void:
 	color = float(health)/float(max_health)
 	modulate = Color.from_hsv(0,1-color,1)
 	if health<prev_health:
-		var bloodInst = blood.instantiate()
+		if bloodInst:
+			bloodInst.queue_free()
+		bloodInst = blood.instantiate()
 		bloodInst.global_position = global_position
 		if health <= 0:
 			get_tree().current_scene.add_child(bloodInst)
+			var coinInst = coin.instantiate()
+			coinInst.global_position = global_position
+			get_tree().current_scene.add_child(coinInst)
 			Manager.enemy_killed(1)
 			Manager.adjust_funds(reward)
 			queue_free()
@@ -36,4 +42,5 @@ func _process(delta: float) -> void:
 			bloodInst.draw_on_top = true
 			bloodInst.timer = 0.2
 			get_tree().current_scene.add_child(bloodInst)
+
 	
