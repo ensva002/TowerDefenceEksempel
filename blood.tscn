@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://uwd8vc56lwy6"]
+
+[ext_resource type="Texture2D" uid="uid://ca71553g52ogc" path="res://splats.png" id="1_6b75d"]
+[ext_resource type="Script" uid="uid://36tchn6j0uqc" path="res://blood.gd" id="2_7d1fo"]
+
+[node name="blood" type="Node2D"]
+z_index = -10
+script = ExtResource("2_7d1fo")
+
+[node name="bloodSprite" type="Sprite2D" parent="."]
+modulate = Color(0.836592, 0.0811648, 0.0922632, 1)
+scale = Vector2(0.461738, 0.463103)
+texture = ExtResource("1_6b75d")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

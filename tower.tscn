@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkhufosr1vkxo"]
+
+[ext_resource type="Texture2D" uid="uid://b0b0xemxbsjy8" path="res://towerDefense_tilesheet@2.png" id="1_k1sas"]
+[ext_resource type="Script" uid="uid://dpmg45vem8vr0" path="res://tower.gd" id="1_vedim"]
+[ext_resource type="AudioStream" uid="uid://dcwkhyb5uoxuk" path="res://footstep_grass_002.ogg" id="3_stebd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vedim"]
+size = Vector2(102, 102)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vedim"]
+radius = 250.0
+
+[node name="tower" type="Area2D"]
+collision_mask = 0
+script = ExtResource("1_vedim")
+towerRange = 250.0
+rateOfFire = 0.2
+
+[node name="Boundry" type="CollisionShape2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+shape = SubResource("RectangleShape2D_vedim")
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_k1sas")
+region_enabled = true
+region_rect = Rect2(2433, 897, 126, 126)
+
+[node name="Gun" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("1_k1sas")
+offset = Vector2(0, -21)
+region_enabled = true
+region_rect = Rect2(2432, 1280, 128, 128)
+
+[node name="Tip" type="Node2D" parent="Gun"]
+position = Vector2(0, -75)
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="RangeShape" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_vedim")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_stebd")
+volume_db = -23.424
+
+[connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

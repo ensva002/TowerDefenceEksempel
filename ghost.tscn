@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://htahxqxqkosw"]
+
+[ext_resource type="Script" uid="uid://c13517rxjjwjg" path="res://ghost.gd" id="1_6attn"]
+[ext_resource type="Texture2D" uid="uid://b0b0xemxbsjy8" path="res://towerDefense_tilesheet@2.png" id="1_v5pp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6attn"]
+size = Vector2(102, 102)
+
+[node name="ghost" type="Area2D"]
+script = ExtResource("1_6attn")
+
+[node name="Boundry" type="CollisionShape2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+shape = SubResource("RectangleShape2D_6attn")
+
+[node name="Base" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("1_v5pp4")
+region_enabled = true
+region_rect = Rect2(2433, 897, 126, 126)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

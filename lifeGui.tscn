@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dluf1g72d1kd2"]
+
+[ext_resource type="Texture2D" uid="uid://44qvyqoxhm23" path="res://spritesheet_hud.png" id="1_egn41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b4ue"]
+atlas = ExtResource("1_egn41")
+region = Rect2(15, 283, 95, 83)
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(40, 35)
+offset_right = 40.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_0b4ue")
+expand_mode = 1

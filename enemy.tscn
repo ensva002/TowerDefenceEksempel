@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5q55tc1xjltc"]
+
+[ext_resource type="Script" uid="uid://clu86ldun8dl6" path="res://move.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://b0b0xemxbsjy8" path="res://towerDefense_tilesheet@2.png" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 14.1421
+
+[sub_resource type="Animation" id="Animation_iifgy"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.164061, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qi2p4"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.164061, -0.25, 0, 0.25, 0, -0.164, -0.25, 0, 0.25, 0, 0.164061, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epg4t"]
+_data = {
+&"RESET": SubResource("Animation_iifgy"),
+&"walking": SubResource("Animation_qi2p4")
+}
+
+[node name="Enemy" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_4gyqm")
+speed = 150.0
+
+[node name="enemy_area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy_area"]
+rotation = 0.164061
+texture = ExtResource("1_7k104")
+region_enabled = true
+region_rect = Rect2(1921, 1281, 126, 126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_area"]
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemy_area"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_epg4t")
+}
+autoplay = "walking"

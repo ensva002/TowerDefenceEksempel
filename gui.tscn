@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfopfqctdtaml"]
+
+[ext_resource type="Texture2D" uid="uid://44qvyqoxhm23" path="res://spritesheet_hud.png" id="1_80edf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lon5"]
+atlas = ExtResource("1_80edf")
+region = Rect2(15, 283, 95, 83)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 83.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Build
+Tower
+(6)"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6lon5")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6lon5")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6lon5")
