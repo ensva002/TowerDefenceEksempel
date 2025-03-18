@@ -45,7 +45,10 @@ func create_new_tower(attributes_inn: Dictionary = {})->Node2D:
 		
 		towerOut.get_node("Base").texture = attributes["sprBase"]
 		towerOut.get_node("Gun").texture = attributes["sprTurret"]
+
 		towerOut.towerRange = attributes["rangeMax"]
+		towerOut.rateOfFire = attributes["fireRate"]
+		towerOut.damage = attributes["damage"]
 		
 		
 		for key in attributes:
@@ -54,5 +57,4 @@ func create_new_tower(attributes_inn: Dictionary = {})->Node2D:
 		
 		if attributes["add_to_list"]:
 			towerList.append(towerOut)
-		print(towerList)
 		return towerOut

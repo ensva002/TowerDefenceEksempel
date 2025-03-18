@@ -7,9 +7,9 @@ extends Area2D
 @onready var fireTimer = $FireTimer
 @onready var audio = $AudioStreamPlayer
 
-@export var towerRange: float = 1
-@export var damage: float = 1
-@export var rateOfFire: float = 1
+var towerRange
+var damage
+var rateOfFire
 
 var target
 var drawTracer

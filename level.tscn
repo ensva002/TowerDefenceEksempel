@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://cvkoe48bl068"]
+[gd_scene load_steps=13 format=4 uid="uid://cvkoe48bl068"]
 
 [ext_resource type="Texture2D" uid="uid://deteum74aejln" path="res://allSprites_retina.png" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://dyk3yawwwxpft" path="res://Main.gd" id="1_vonw3"]
 [ext_resource type="Script" uid="uid://6bpgqn3bsiss" path="res://gui.gd" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://b5q55tc1xjltc" path="res://enemy.tscn" id="4_f2txt"]
 [ext_resource type="Texture2D" uid="uid://44qvyqoxhm23" path="res://spritesheet_hud.png" id="5_1ainy"]
+[ext_resource type="PackedScene" uid="uid://b25vapuh276eg" path="res://build_button.tscn" id="5_n6hdu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -228,11 +229,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_0b4ue")
 
-[node name="Button" type="Button" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer"]
+[node name="Button_Build" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer" instance=ExtResource("5_n6hdu")]
 layout_mode = 2
-text = "Build
-Tower
-(6)"
+
+[node name="Button_Build2" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer" instance=ExtResource("5_n6hdu")]
+layout_mode = 2
+tower_type = 1
 
 [node name="Padding" type="Control" parent="Camera2D/CanvasLayer/TextureRect/HBoxContainer"]
 layout_mode = 2
@@ -282,5 +284,4 @@ curve = SubResource("Curve2D_1ainy")
 [node name="EnemyTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/TextureRect/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
